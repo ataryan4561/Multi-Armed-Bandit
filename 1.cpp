@@ -32,7 +32,7 @@ int main()
             ll ml=0;
             loop(g,arms)
             {
-                ucb[g]+=((rew[g]/pulls[g])+(2*log(i)/pulls[g]));
+                ucb[g]=((rew[g]/pulls[g])+sqrt((2*log(i)/pulls[g])));
                 if(ucb[g]>maxi)
                 {
                     maxi=ucb[g];
@@ -47,10 +47,7 @@ int main()
     loop(i,arms)
     {
         gq.push({pulls[i],i+1});
-    }
-    loop(i,arms)
-    {
-        cout<<"The pull up are for "<<i+1<<" -> "<<pulls[i]<<endl;
+         cout<<"The pull up are for "<<i+1<<" -> "<<pulls[i]<<endl;
     }
     cout<<gq.top().first<<" "<<gq.top().second<<endl;
 }
